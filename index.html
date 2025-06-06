@@ -278,18 +278,62 @@
         padding: 20px;
       }
     }
-    
+
+  /* ✅ Không thay đổi layout các phần khác */
+  /* Không chỉnh .hero, .hero-content, .btn, ... */
+.menu-toggle {
+  display: none;
+  background: var(--primary);
+  color: white;
+  font-size: 24px;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--secondary);
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
   </style>
 </head>
 <body>
   <header>
     <img src="img/843e7611d60662583b17.png" class="logo" alt="SIKHEM Logo" />
-    <nav>
-      <a href="#">Trang chủ</a>
-      <a href="#">Giới thiệu</a>
-      <a href="#gallery">Hình ảnh</a>
-      <a href="#timeline">Lịch trình</a>
-    </nav>
+<nav>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <div class="nav-links">
+    <a href="#">Trang chủ</a>
+    <a href="#">Giới thiệu</a>
+    <a href="#gallery">Hình ảnh</a>
+    <a href="#timeline">Lịch trình</a>
+  </div>
+</nav>
+
   </header>
 
 <section class="hero">
@@ -353,5 +397,11 @@
   <footer>
     &copy; <b>2025 SIKHEM I - THIẾT KẾ VÀ PHÁT TRIỂN BỚI BAN TRUYỀN THÔNG XỨ ĐOÀN.</b>
   </footer>
+  <script>
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('show');
+  }
+</script>
+
 </body>
 </html> 
