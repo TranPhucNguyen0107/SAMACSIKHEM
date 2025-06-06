@@ -7,6 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    @font-face {
+  font-family: 'iCiel Brush Up';
+  src: url('fonts/iCielBrushUp.woff2') format('woff2'),
+       url('fonts/iCielBrushUp.woff') format('woff'),
+       url('fonts/iCiel-Brush-Up.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --primary: #F66435;       /* Exotic Orange */
   --secondary: #F3EFCA;     /* Clotted Cream */
@@ -99,11 +108,12 @@
     .hero-content {
       padding-left: 80px;
       max-width: 700px;
-      margin-bottom: 90px;
+      margin-bottom: 200px;
     }
 
     .hero-content h1 {
-      font-size: 72px;
+      font-family: 'iCiel Brush Up', cursive;
+      font-size: 130px;
       font-weight: 800;
       margin-bottom: 20px;
       line-height: 1.1;
