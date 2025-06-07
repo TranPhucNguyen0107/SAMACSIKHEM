@@ -84,6 +84,23 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+     .logo h1{
+      font-family: 'iCiel Brush Up', cursive;
+      font-size: 40%px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      color: var(--primary);
+      text-shadow: 5px 3px 2px var(--day1);
+      text-align: center;
+      margin-top: 15px;
+    }
 .hero {
   position: relative;
   height: 100vh;
@@ -154,7 +171,7 @@
     .section {
       background: var(--secondary);
       padding: 80px 60px;
-      margin-top: -30px;
+      margin-top: -300px;
       text-align: center;
     }
 
@@ -391,11 +408,14 @@
   }
 
   .hero-content h1 {
-    font-size: 60px;
+    font-size: 100px;
+    text-align: center;
   }
 
   .hero-content p {
     font-size: 15px;
+    text-align: center;
+    margin-bottom: 20%;
   }
 
   .section {
@@ -436,6 +456,33 @@ body.loading {
 body.loaded {
   visibility: visible;
 }
+/* Lightbox backdrop */
+#lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Lightbox image */
+#lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(255,255,255,0.2);
+  animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
   </style>
 </head>
@@ -446,8 +493,11 @@ body.loaded {
 </div>
 
   <header>
+    <div class="logo">
     <img src="img/843e7611d60662583b17.png" class="logo" alt="SIKHEM Logo" />
-<nav>
+    <h1>SIKHEM I</h1>
+    </div>
+    <nav>
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
   <div class="nav-links">
     <a href="https://www.facebook.com/xudoanminhmauchuagxvinhsonnghiahoa" target="_blank" rel="noopener noreferrer">Trang chủ</a>
@@ -470,18 +520,21 @@ body.loaded {
   </div>
 </section>
 
-  <section class="section" id="gallery">
-    <h2>Khoảnh Khắc Nổi Bật</h2>
-    <div class="gallery">
+<section class="section" id="gallery">
+  <h2>Khoảnh Khắc Nổi Bật</h2>
+  <div class="gallery">
+    <a href="img/IMG_5875.JPG" class="lightbox">
       <img src="img/IMG_5875.JPG" alt="Gallery Image 1">
-
+    </a>
+    <a href="img/IMG_5911.JPG" class="lightbox">
       <img src="img/IMG_5911.JPG" alt="Gallery Image 2">
+    </a>
+    <a href="img/IMG_5953.JPG" class="lightbox">
       <img src="img/IMG_5953.JPG" alt="Gallery Image 3">
-    </div>
+    </a>
+  </div>
+</section>
 
-</video>
-
-  </section>
   <section class="highlight-vid" id="videos">
     <h2>Video Ấn Tượng</h2>
     <div class="video-gallery">
@@ -533,6 +586,10 @@ body.loaded {
   <footer>
     &copy; <b>2025 SIKHEM I - THIẾT KẾ VÀ PHÁT TRIỂN BỚI BAN TRUYỀN THÔNG XỨ ĐOÀN.</b>
   </footer>
+  <div id="lightbox-overlay">
+  <img src="" alt="Preview" />
+</div>
+
     <script>
     function toggleMenu() {
       document.querySelector('.nav-links').classList.toggle('show');
@@ -574,6 +631,23 @@ body.loaded {
       document.body.classList.remove('loading');
       document.body.classList.add('loaded');
     }
+
+    const lightboxLinks = document.querySelectorAll('.lightbox');
+  const lightboxOverlay = document.getElementById('lightbox-overlay');
+  const lightboxImage = lightboxOverlay.querySelector('img');
+
+  lightboxLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const imgSrc = link.getAttribute('href');
+      lightboxImage.src = imgSrc;
+      lightboxOverlay.style.display = 'flex';
+    });
+  });
+
+  lightboxOverlay.addEventListener('click', () => {
+    lightboxOverlay.style.display = 'none';
+  });
   </script>
 </body>
 </html> 
